@@ -33,15 +33,17 @@ app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
 app.config.update(SESSION_COOKIE_HTTPONLY=True, SESSION_COOKIE_SAMESITE="Lax",
                   SESSION_COOKIE_SECURE=bool(os.environ.get("WEBSITE_SITE_NAME")),
                   PERMANENT_SESSION_LIFETIME=dt.timedelta(days=14))
-PASSWORD = os.environ.get("APP_PASSWORD", "")
+# Empty or unset APP_PASSWORD leaves the site public. A non-empty value
+# restores the optional password gate.
+PASSWORD = os.environ.get("APP_PASSWORD", "").strip()
 
 # ------------------------------------------------------------------ helpers
 def login_required(f):
     @wraps(f)
     def w(*a, **k):
-        if not session.get("ok"):
-            return redirect(url_for("login", next=request.path))
-        return f(*a, **k)
+        if not PASSWORD or session.get("ok"):
+            return f(*a, **k)
+        return redirect(url_for("login", next=request.path))
     return w
 
 def load_profile():
@@ -99,17 +101,20 @@ def generate(job: dict, extra: dict, use_llm: bool) -> str:
 # ------------------------------------------------------------------ routes
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if not PASSWORD:
+        return redirect(url_for("home"))
     if request.method == "POST":
-        if PASSWORD and secrets.compare_digest(request.form.get("password", ""), PASSWORD):
+        if secrets.compare_digest(request.form.get("password", ""), PASSWORD):
             session.permanent = True; session["ok"] = True
             nxt = request.args.get("next") or "/"
             return redirect(nxt if nxt.startswith("/") and not nxt.startswith("//") else "/")
-        flash("Wrong password." if PASSWORD else "APP_PASSWORD is not set on the server.")
+        flash("Wrong password.")
     return render_template("login.html")
 
 @app.route("/logout")
 def logout():
-    session.clear(); return redirect(url_for("login"))
+    session.clear()
+    return redirect(url_for("home") if not PASSWORD else url_for("login"))
 
 @app.route("/", methods=["GET", "POST"])
 @login_required

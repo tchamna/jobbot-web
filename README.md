@@ -4,8 +4,16 @@ Tailored resume + cover letter web app (Flask).
 
 ## Local run
 
+The site is open to anyone with the URL when `APP_PASSWORD` is unset or empty. Set a non-empty `APP_PASSWORD` only if you want to require a password.
+
 ```powershell
 pip install -r requirements.txt
+python app.py
+```
+
+Optional password gate:
+
+```powershell
 $env:APP_PASSWORD = "your-password"
 python app.py
 ```

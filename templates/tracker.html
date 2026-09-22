@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block body %}<h1>Tracker</h1><p class="sub">Every application you've prepared. Update the status as things move.</p>
+<div class="stats">{% for s in statuses %}<div class="stat"><b>{{ counts[s] }}</b>{{ s }}</div>{% endfor %}</div>
+<div class="card tablewrap">{% if rows %}<table><tr><th>#</th><th>Date</th><th>Role</th><th>Company</th><th>Status</th><th>Notes</th></tr>
+{% for r in rows %}<tr><td>{{ r.id }}</td><td class="hint">{{ r.date }}</td><td><a href="/job/{{ r.id }}">{{ r.title }}</a></td><td>{{ r.company }}</td>
+<td><form method="post" action="/job/{{ r.id }}/status"><select name="status" onchange="this.form.submit()" style="width:auto;padding:4px 8px">{% for s in statuses %}<option {{ 'selected' if r.status==s }}>{{ s }}</option>{% endfor %}</select></form></td><td class="hint">{{ r.notes }}</td></tr>{% endfor %}</table>
+{% else %}<p class="hint">Nothing yet. <a href="/">Prepare your first application.</a></p>{% endif %}</div>{% endblock %}

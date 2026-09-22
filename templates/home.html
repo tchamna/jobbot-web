@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block body %}
+<h1>New application</h1><p class="sub">Paste a job link or the job description. You get a tailored resume, cover letter and fit report in a few seconds.</p>
+<form method="post" class="card" onsubmit="this.classList.add('busy');this.querySelector('button').disabled=true">
+<label>Job link <span class="hint">(many job boards block automated reading; if so, paste the text below)</span></label>
+<input type="url" name="url" value="{{ form.get('url','') }}" placeholder="https://…">
+<label>Job description <span class="hint">(optional if the link works)</span></label>
+<textarea name="text" placeholder="Paste the full job ad here">{{ form.get('text','') }}</textarea>
+<div class="row"><div><label>Job title</label><input type="text" name="title" value="{{ form.get('title','') }}" placeholder="Filled from the ad when possible"></div>
+<div><label>Company</label><input type="text" name="company" value="{{ form.get('company','') }}"></div>
+<div><label>Location</label><input type="text" name="location" value="{{ form.get('location','') }}"></div>
+<div><label>Salary</label><input type="text" name="salary" value="{{ form.get('salary','') }}"></div></div>
+<label>Why this company? <span class="hint">(one short paragraph of research; this is what makes the letter unique)</span></label>
+<textarea name="why_company" style="min-height:90px" placeholder="e.g. a product, a news item, a problem they have that you have solved">{{ form.get('why_company','') }}</textarea>
+{% if llm %}<label><input type="checkbox" name="llm" value="1"> Let Claude draft the company paragraph if I leave it empty</label>{% endif %}
+<div class="actions"><button class="btn">Generate application</button><span class="spin hint">Working…</span></div></form>
+{% if recent %}<div class="card"><h2>Recent</h2><table>{% for r in recent %}<tr><td><a href="/job/{{ r.id }}">{{ r.title }}</a></td><td>{{ r.company }}</td><td><span class="status {{ r.status }}">{{ r.status }}</span></td><td class="hint">{{ r.date }}</td></tr>{% endfor %}</table></div>{% endif %}
+{% endblock %}

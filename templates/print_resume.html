@@ -1,0 +1,12 @@
+{% set p = v.profile %}<!doctype html><html><head><meta charset="utf-8"><title>Resume_{{ p.name.split(',')[0].split()[-1] }}_{{ v.job.company }}</title><style>{% include "_doc.css" %}</style></head><body>
+{% if not request.args.embed %}<div class="bar noprint">Choose “Save as PDF” as the printer. <button onclick="print()">Print / Save PDF</button></div>{% endif %}
+<h1>{{ p.name }}</h1><div class="headline">{{ v.headline }}</div>
+<div class="contact">{{ p.location }} | {{ p.phone }} | {{ p.email }}<br>{% for l in p.links %}{% if not loop.first %} | {% endif %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</div>
+<h2>Summary</h2><p>{{ v.summary }}</p>
+<h2>Core Skills</h2>{% for g in v.skills %}<p><b>{{ g.group }}:</b> {{ g['items']|join(', ') }}</p>{% endfor %}
+<h2>Experience</h2>{% for e in v.experience %}<div class="role">{{ e.role }}<span>{{ e.dates }}</span></div><div class="org">{{ e.org }} · {{ e.where }}</div>
+<ul>{% for b in e.bullets %}<li>{{ b.text }}</li>{% endfor %}</ul>{% endfor %}
+<h2>Selected Projects</h2><ul>{% for pr in v.projects %}<li><b>{{ pr.name }} ({{ pr.year }}).</b> {{ pr.text }}{% if pr.url %} <a href="https://{{ pr.url }}">{{ pr.url }}</a>{% endif %}</li>{% endfor %}</ul>
+<h2>Education</h2>{% for ed in p.education %}<p><b>{{ ed.degree }}</b> — {{ ed.school }}</p>{% if ed.note %}<p class="note">{{ ed.note }}</p>{% endif %}{% endfor %}
+<h2>Distinctions</h2><ul>{% for x in p.distinctions %}<li>{{ x }}</li>{% endfor %}</ul>
+</body></html>

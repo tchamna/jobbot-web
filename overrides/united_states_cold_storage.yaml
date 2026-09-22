@@ -1,0 +1,18 @@
+# Optional per-company override. File name = company slug. Any key here
+# replaces the auto-generated text (hook, why_company, first_look, closing,
+# greeting, company_name, headline, summary). Leave keys out to use defaults.
+company_name: "United States Cold Storage"
+greeting: "Dear Hiring Team at United States Cold Storage,"
+why_company: >-
+  One detail about United States Cold Storage caught my attention: your facilities join
+  demand-response programs by deferring defrost cycles and compressor starts, and they let the
+  thermal inertia of frozen product carry a room through the event. To a control engineer, that is a
+  model-predictive control problem: pre-cool ahead of the event, stay inside temperature limits, and
+  earn the most from the grid. My published work is on constraint-handling optimal control, so I
+  would be glad to help optimize both the freight and the refrigeration that protects it.
+first_look: >-
+  I would start by learning the operation, then look at dock and appointment scheduling from TMS
+  arrivals, labor forecasts from WMS history, and refrigeration load. Each would ship as a monitored
+  Python/SQL service on Azure. I hold a Master's in Physics and a PhD in Mechanical Engineering, and
+  I live in New Jersey, so the hybrid schedule in Camden suits me well.
+closing: "I would welcome a conversation about where optimization could make the biggest difference across your network."

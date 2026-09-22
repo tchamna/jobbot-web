@@ -1,0 +1,231 @@
+# ============================================================================
+# MASTER PROFILE — the single source of truth for every application.
+# The bot only ever SELECTS and ORDERS what is written here; it never invents
+# facts. Edit this file to add new achievements, then re-run the bot.
+# Each bullet carries tags; the bot scores tags + words against the job ad.
+# ============================================================================
+name: "Rodrigue Tchamna, PhD"
+location: "New Jersey, USA"
+phone: "(917) 208-0512"
+email: "tchamna@gmail.com"
+links:
+  - {label: "portfolio.tchamna.com", url: "https://portfolio.tchamna.com"}
+  - {label: "linkedin.com/in/rodrigue-shck-tchamna-phd-b1742411", url: "https://www.linkedin.com/in/rodrigue-shck-tchamna-phd-b1742411/"}
+  - {label: "github.com/tchamna", url: "https://github.com/tchamna"}
+
+# ---------------------------------------------------------------------------
+# Archetypes: the bot detects which one a job ad belongs to, then uses the
+# matching headline, summary and cover-letter story.
+# ---------------------------------------------------------------------------
+archetypes:
+  logistics:
+    detect: [logistics, supply chain, warehouse, wms, tms, erp, routing, dispatch, fleet, transportation, freight, inventory, fulfillment, optimization, operations research, cold storage, cold chain, distribution, scheduling, last mile, network design]
+    headline: "Applied Data Scientist | Optimization, Forecasting & Operations ML"
+    summary: >-
+      Applied data scientist who builds optimization and machine-learning models that run
+      operations. PhD in Mechanical Engineering (optimal and model-predictive control) and
+      M.S. in Physics, with 10+ years turning messy operational data into production Python
+      and SQL systems: a vehicle-routing dispatch optimizer (Google OR-Tools, pickup-and-delivery
+      with time windows), transit capacity models for New York agencies, and battery-fleet
+      anomaly detection that cut processing time by 98%. Now doing analytics for organ-recovery
+      operations, a cold chain where every decision runs against the clock.
+    hook: >-
+      Most of my career has come back to one question: how do you keep a physical system inside its
+      limits while it is being pushed hard? I answered it with optimal controllers as a PhD control
+      engineer, for grid-scale battery fleets at EOS Energy, and now for organ recovery at NJ Sharing
+      Network, a cold chain where the deadline is measured in hours. {company} faces the same problem
+      at warehouse scale, which is why the {title} role stands out to me.
+  energy:
+    detect: [energy, battery, grid, utility, power, renewable, solar, storage, forecasting load, demand response, telemetry, iot, sensor]
+    headline: "Data Scientist | Energy Systems, Time Series & Anomaly Detection"
+    summary: >-
+      Data scientist with a PhD in Mechanical Engineering (optimal control) and 10+ years of
+      building models for physical systems. At EOS Energy I built State-of-Charge models under
+      3% RMSE, deterministic weak-battery detection and real-time anomaly pipelines that cut
+      processing time by 98% and response time by 75%. I pair physics intuition with production
+      Python, SQL and cloud deployment.
+    hook: >-
+      I spent three years at EOS Energy making grid-scale batteries predictable, and before that
+      a decade designing optimal controllers for physical systems. {company}'s {title} role sits
+      exactly where those two threads meet.
+  healthcare:
+    detect: [healthcare, clinical, patient, hospital, organ, transplant, ehr, epic, medical, health system, payer, claims, hipaa]
+    headline: "Data Scientist | Healthcare Operations Analytics & Decision Support"
+    summary: >-
+      Data scientist working in organ and tissue procurement analytics at NJ Sharing Network
+      (TrueNorth, DonorNet, UNOS workflows), with a PhD in Mechanical Engineering and 10+ years of
+      building production ML, forecasting and optimization tools. I focus on decision support for
+      time-critical operations and on dashboards that front-line coordinators actually use.
+    hook: >-
+      In organ recovery, a late decision can cost a life. My work at NJ Sharing Network has taught
+      me to build analytics that respect that clock, and the {title} role at {company} is where I
+      want to take that discipline next.
+  ai_llm:
+    detect: [llm, large language model, generative ai, genai, rag, retrieval, langchain, transformer, nlp, agent, agentic, prompt, embedding, vector]
+    headline: "AI Engineer / Data Scientist | RAG, LLM Systems & MLOps"
+    summary: >-
+      AI engineer and data scientist with a PhD and 10+ years of shipping ML to production. I built
+      and deployed RAG systems (FAISS, Transformers, LangChain) on Azure with CI/CD, and I founded
+      Resulam, a language-technology platform that has reached more than 5 million learners
+      across African languages, including low-resource NLP datasets.
+    hook: >-
+      I have spent the last decade teaching machines languages that most models have never seen,
+      such as Nufi and other Bamileke languages, while shipping RAG systems to production on Azure.
+      That combination is why the {title} role at {company} caught my attention.
+  analytics:
+    detect: [analytics, dashboard, kpi, business intelligence, power bi, tableau, reporting, stakeholder, insights]
+    headline: "Data Scientist | Analytics, ML & Decision Support"
+    summary: >-
+      Data scientist with a PhD and 10+ years of turning ambiguous operational questions into
+      models, pipelines and dashboards that decision makers use. My record includes a 98% cut in
+      data processing time at EOS Energy, published transit-capacity analysis for New York
+      agencies, and production ML APIs in Python, SQL and Azure.
+    hook: >-
+      I like problems where the data is messy, the stakes are real, and the answer has to be
+      explained to someone who will act on it. The {title} role at {company} looks like exactly that.
+
+# ---------------------------------------------------------------------------
+# Experience — bullet bank. The bot keeps the best-scoring `max_bullets`.
+# `core: true` bullets are always kept.
+# ---------------------------------------------------------------------------
+experience:
+  - org: "NJ Sharing Network"
+    role: "Data Scientist"
+    where: "New Providence, NJ"   # VERIFY
+    dates: "2026 – Present"        # VERIFY start month
+    max_bullets: 3
+    bullets:
+      - text: "Build analytics and decision-support tools for organ and tissue referral case management, a time-critical cold-chain operation where response speed drives outcomes."
+        tags: [healthcare, operations, logistics, decision support, cold chain, analytics]
+        core: true
+      - text: "Work across TrueNorth donor records, DonorNet and UNOS workflows to structure case data for tracking, reporting and data-quality review."
+        tags: [healthcare, sql, data pipeline, erp, data quality, etl]
+      - text: "Built a clinical dispatch dashboard (React) that gives coordinators a live view of active cases and assignments."
+        tags: [dashboard, dispatch, operations, react, stakeholder, logistics]
+  - org: "EOS Energy Enterprises"
+    role: "Data Scientist"
+    where: "New Jersey, USA"
+    dates: "Apr 2022 – Aug 2025"
+    max_bullets: 5
+    bullets:
+      - text: "Architected end-to-end data pipelines and real-time anomaly detection over GB-scale battery-fleet telemetry, reducing data processing time by 98% and operational response time by 75%."
+        tags: [data pipeline, anomaly detection, production, python, sql, etl, monitoring, operations, time series]
+        core: true
+      - text: "Built ML and deep-learning models for State-of-Charge estimation (under 3% RMSE) and forecast dischargeable energy to support operational planning."
+        tags: [machine learning, forecasting, time series, deep learning, pytorch, tensorflow, statistical modeling, energy]
+        core: true
+      - text: "Invented deterministic algorithms that automatically flag weak batteries across the fleet, replacing manual inspection with instant reports to field engineers."
+        tags: [algorithm, automation, operations, anomaly detection, energy]
+      - text: "Developed interpretable root-cause analysis frameworks for performance degradation, giving reproducible answers without black-box models."
+        tags: [root cause, statistical modeling, stakeholder, validation, energy]
+      - text: "Deployed ML APIs and web apps (FastAPI, Flask, Docker) that put model outputs directly in the hands of engineering and business teams."
+        tags: [production, deployment, fastapi, flask, docker, api, stakeholder, mlops]
+  - org: "Resulam (AI & language-technology nonprofit)"
+    role: "Founder; AI Engineer"
+    where: "New Jersey / Remote"
+    dates: "2012 – Present"
+    max_bullets: 3
+    bullets:
+      - text: "Designed and deployed a Retrieval-Augmented Generation (RAG) assistant (FAISS, Hugging Face Transformers, LangChain) on Azure App Service with Docker, Blob-backed vector storage and GitHub Actions CI/CD."
+        tags: [rag, llm, azure, docker, ci/cd, production, ai, nlp, deployment, mlops]
+        core: true
+      - text: "Grew a portfolio of 30+ language-learning apps and 40+ books that reached over 5 million users, and built structured datasets for low-resource African-language NLP."
+        tags: [product, nlp, leadership, data, scale]
+        core: true
+      - text: "Lead a multidisciplinary team (engineering, linguistics, product) from idea to Play Store release."
+        tags: [leadership, stakeholder, product, collaboration]
+  - org: "City College of New York (CUNY), University Transportation Research Center"
+    role: "Research Associate, Transportation Data Science"
+    where: "New York, NY"
+    dates: "Sep 2017 – Apr 2022"
+    max_bullets: 4
+    bullets:
+      - text: "Modeled how social-distancing rules cut transit vehicle capacity and changed operations (published in Transportation Research Interdisciplinary Perspectives, 2021)."
+        tags: [transportation, capacity, operations research, statistical modeling, logistics, simulation, research]
+        core: true
+      - text: "Analyzed large NYC work-zone and subway ridership datasets in Python and R for NYSERDA- and NYSDOT-sponsored projects on connected, autonomous and shared vehicles."
+        tags: [transportation, python, r, analytics, large datasets, logistics, fleet]
+      - text: "Built Tableau and Power BI dashboards and briefed public agencies; findings informed transportation planning and policy."
+        tags: [dashboard, power bi, tableau, stakeholder, communication, analytics]
+      - text: "Taught Analytical Techniques in Transportation as teaching assistant and mentored junior researchers."
+        tags: [teaching, communication, transportation]
+  - org: "Yeungnam University"
+    role: "Research Professor, Process Control & Optimization"
+    where: "Gyeongsan, South Korea"
+    dates: "Apr 2014 – Aug 2017"
+    max_bullets: 2
+    bullets:
+      - text: "Derived analytical optimal controllers that respect hard operational constraints for industrial processes (dead-time, integrating and open-loop unstable), across five journal papers including ISA Transactions."
+        tags: [optimization, constraints, control, modeling, research, statistical modeling, process control, operations research]
+        core: true
+      - text: "Taught the graduate course Advanced Process Control (system identification, stability, optimization) and supervised student research."
+        tags: [teaching, optimization, modeling, communication]
+
+projects:
+  - name: "Ride-Share Dispatch Optimizer"
+    year: "2026"
+    text: "Formulated fleet dispatch as a pickup-and-delivery vehicle routing problem with time windows in Google OR-Tools (same-vehicle pairing, capacity, optional requests with penalties, tunable deadhead cost, guided local search). Benchmarked it against first-fit and best-fit greedy heuristics and documented for non-specialists why the global solver makes different choices."
+    tags: [optimization, routing, vrp, dispatch, logistics, operations research, python, fleet, scheduling, transportation, tms]
+  - name: "Financial Trading ETL Pipeline"
+    year: "2025"
+    text: "Cloud ETL pipeline from multiple market APIs with fallback into AWS S3 (Parquet, 92% compression, lifecycle to Glacier) and Snowflake, orchestrated with Airflow and surfaced in Power BI."
+    tags: [etl, sql, snowflake, aws, airflow, data pipeline, data engineering]
+    url: "github.com/tchamna/financial-trading-etl-pipeline"
+  - name: "Organ Donor Analytics Platform"
+    year: "2026"
+    text: "End-to-end medallion (bronze, silver, gold) analytics platform with predictive models and decision-support dashboards."
+    tags: [healthcare, data pipeline, sql, dashboard, machine learning, lakehouse]
+  - name: "RAG Banking Assistant"
+    year: "2025"
+    text: "Semantic search and question answering over financial documents (FAISS, Flan-T5), deployed on Azure with CI/CD."
+    tags: [rag, llm, azure, ci/cd, nlp, ai]
+    url: "rag.tchamna.com"
+
+skills:
+  - group: "Optimization & OR"
+    items: [Constrained optimization, Vehicle routing (VRP/VRPTW), Google OR-Tools, Heuristics & local search, Model predictive / optimal control, Simulation]
+    tags: [optimization, logistics, operations research, routing, scheduling]
+  - group: "Statistics & ML"
+    items: [Forecasting & time series, Regression & classification, Anomaly detection, A/B testing, Causal inference, scikit-learn, PyTorch, TensorFlow]
+    tags: [machine learning, statistical modeling, forecasting]
+  - group: "Data & Programming"
+    items: [Python (pandas, NumPy), SQL, PySpark, R, MATLAB, ETL/ELT, Airflow, Snowflake, Databricks, Microsoft Fabric]
+    tags: [python, sql, data pipeline, etl]
+  - group: "Production & Cloud"
+    items: [Azure (App Service, Blob), AWS (S3, EC2), Docker, GitHub Actions CI/CD, FastAPI, Flask, Terraform, Git]
+    tags: [azure, docker, production, deployment, mlops]
+  - group: "AI / NLP"
+    items: [LLMs, RAG, LangChain, FAISS, Hugging Face Transformers, Embeddings]
+    tags: [llm, rag, nlp, ai]
+  - group: "BI & Visualization"
+    items: [Power BI, Tableau, Plotly Dash, Streamlit, Matplotlib]
+    tags: [dashboard, analytics, power bi, tableau]
+
+education:
+  - degree: "PhD, Mechanical Engineering"
+    school: "Gyeongsang National University, South Korea"
+    note: "Thesis on active safety control with full-car linear and nonlinear models (optimal control, MPC, Kalman filtering). Best Paper Award, IAVSD 2013."
+  - degree: "Master of Science (M.S.), Physics, Applied Mechanics"
+    school: "University of Yaoundé I, Cameroon"
+  - degree: "B.S., Physics"
+    school: "University of Yaoundé I, Cameroon"
+
+distinctions:
+  - "13 peer-reviewed journal articles, including Vehicle System Dynamics, ISA Transactions and Transportation Research Interdisciplinary Perspectives; reviewer for Control Engineering Practice and IEEE Transactions on Vehicular Technology."
+  - "Certifications: Google Data Analytics (2021); Apache Spark SQL for Data Analysts (2022); Data Analysis Using PySpark (2022)."
+  - "Languages: English and French (full professional); Fe'efe'e/Nufi (native); Korean and Spanish (working)."
+
+# Sentences the bot can add to a cover letter when these themes appear in the ad.
+first_look_ideas:
+  - when: [wms, warehouse, slotting, putaway, pick]
+    idea: "warehouse labor and slotting models built on WMS history"
+  - when: [tms, transportation, routing, carrier, freight, truck, dock]
+    idea: "dock-door and appointment scheduling tied to TMS arrival patterns, where my routing work transfers directly"
+  - when: [forecast, demand, volume]
+    idea: "volume forecasts that feed staffing and capacity decisions rather than a slide"
+  - when: [cold storage, refrigerat, temperature, energy, utility]
+    idea: "refrigeration energy load versus door and throughput activity, which is close to the battery-fleet energy modeling I did at EOS"
+  - when: [erp, inventory, billing]
+    idea: "reconciling WMS, TMS and ERP records, since the places where those systems disagree usually hide the first quick win"
+  - when: [ml, machine learning, model]
+    idea: "a monitoring loop so every deployed model is checked against real outcomes and retrained on schedule"

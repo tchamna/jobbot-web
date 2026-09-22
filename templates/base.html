@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}JobBot{% endblock %}</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f4e5f'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>JB</text></svg>">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head><body>
+{% if session.ok %}<header class="top"><div class="in"><a class="brand" href="/">JobBot · Tchamna</a>
+<nav><a href="/" class="{{ 'on' if request.path=='/' }}">New application</a> &nbsp; <a href="/tracker" class="{{ 'on' if request.path=='/tracker' }}">Tracker</a> &nbsp; <a href="/profile" class="{{ 'on' if request.path=='/profile' }}">Profile</a> &nbsp; <a href="/logout">Log out</a></nav></div></header>{% endif %}
+<main>{% with m = get_flashed_messages() %}{% for x in m %}<div class="flash">{{ x }}</div>{% endfor %}{% endwith %}
+{% block body %}{% endblock %}</main></body></html>

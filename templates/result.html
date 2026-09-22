@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block title %}{{ v.job.company }} · JobBot{% endblock %}{% block body %}
+<h1>{{ v.job.title }}</h1><p class="sub">{{ v.job.company }}{% if v.job.location %} · {{ v.job.location }}{% endif %}{% if v.job.salary %} · {{ v.job.salary }}{% endif %}{% if v.job.url %} · <a href="{{ v.job.url }}" target="_blank" rel="noopener">View ad</a>{% endif %}</p>
+<div class="card"><div class="actions" style="margin-top:0">
+<a class="btn" href="/job/{{ jid }}/print/resume" target="_blank">Resume → Save as PDF</a>
+<a class="btn" href="/job/{{ jid }}/print/cover" target="_blank">Cover letter → Save as PDF</a>
+{% for f in files %}<a class="btn ghost" href="/job/{{ jid }}/file/{{ f }}">{{ 'Resume' if f.startswith('Resume') else 'Cover letter' }} (.docx)</a>{% endfor %}
+<a class="btn ghost" href="/job/{{ jid }}/zip">Download all</a></div>
+<form method="post" action="/job/{{ jid }}/status" class="row" style="margin-top:14px">
+<div><label>Status</label><select name="status" onchange="this.form.submit()">{% for s in statuses %}<option {{ 'selected' if row.status==s }}>{{ s }}</option>{% endfor %}</select></div>
+<div><label>Notes</label><input type="text" name="notes" value="{{ row.notes }}" placeholder="Contact, next step…" onchange="this.form.submit()"></div></form></div>
+<div class="card"><h2>Fit: {{ v.matched|length }} of {{ v.matched|length + v.gaps|length }} keywords in the ad <span class="hint">· angle: {{ v.arch }}</span></h2>
+{% for k in v.matched %}<span class="chip">{{ k }}</span>{% endfor %}{% for k in v.gaps %}<span class="chip gap" title="In the ad, not in your profile">{{ k }}</span>{% endfor %}</div>
+<div class="card"><div class="tabs"><button class="on" data-p="r">Resume</button><button data-p="c">Cover letter</button><button data-p="f">Fit report</button></div>
+<div class="pane on" id="r"><iframe class="doc" src="/job/{{ jid }}/print/resume?embed=1"></iframe></div>
+<div class="pane" id="c"><iframe class="doc" src="/job/{{ jid }}/print/cover?embed=1" style="height:1000px"></iframe></div>
+<div class="pane" id="f"><pre class="report">{{ report }}</pre></div></div>
+<script>document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.pane').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById(b.dataset.p).classList.add('on')})</script>
+{% endblock %}

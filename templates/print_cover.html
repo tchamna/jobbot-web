@@ -1,0 +1,7 @@
+{% set p = v.profile %}<!doctype html><html><head><meta charset="utf-8"><title>CoverLetter_{{ p.name.split(',')[0].split()[-1] }}_{{ v.job.company }}</title><style>{% include "_doc.css" %}
+@page{margin:0.7in 0.9in}body{font-size:11pt;line-height:1.38;max-width:6.7in}.c p{margin:0 0 10px}</style></head><body>
+{% if not request.args.embed %}<div class="bar noprint">Choose “Save as PDF” as the printer. <button onclick="print()">Print / Save PDF</button></div>{% endif %}
+<h1 style="font-size:18pt">{{ p.name }}</h1>
+<div class="contact" style="border-bottom:1px solid #1f4e5f;padding-bottom:3px;margin-bottom:10px">{{ p.location }} | {{ p.phone }} | {{ p.email }}<br><a href="{{ p.links[0].url }}">{{ p.links[0].label }}</a> | <a href="{{ p.links[-1].url }}">{{ p.links[-1].label }}</a></div>
+<div class="c">{% for b in v.cover %}<p {% if loop.index==2 %}style="font-weight:700"{% endif %}{% if loop.revindex==2 %}style="margin-bottom:2px"{% endif %}>{{ b }}</p>{% endfor %}</div>
+</body></html>
